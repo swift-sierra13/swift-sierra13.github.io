@@ -1,0 +1,1184 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>尤果网美图录-写真图集索引与检索指南</title>
+<meta name="description" content="尤果网美图录收录模特写真图集的整理方式，按主题、模特名与拍摄档期归类，说明图集版本差异、下载与在线浏览的取舍，并附常见问题与读者评分参考。">
+<meta name="keywords" content="尤果网美图录">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232b3a4a'/%3E%3Ccircle cx='24' cy='26' r='9' fill='%23e8b06a'/%3E%3Cpath d='M14 50l14-16 10 12 6-7 8 11z' fill='%23f3e6d2'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#22272e;
+  --ink-2:#4a5462;
+  --ink-3:#7b8594;
+  --paper:#faf7f2;
+  --card:#ffffff;
+  --line:#e3ddd3;
+  --line-2:#d3cabb;
+  --brand:#2b3a4a;
+  --brand-soft:#eef1f4;
+  --accent:#c2632f;
+  --accent-soft:#fbeee5;
+  --gold:#b98a3e;
+  --ok:#3f7a5a;
+  --radius-s:6px;
+  --radius-m:12px;
+  --radius-l:20px;
+  --shadow-s:0 1px 2px rgba(34,39,46,.06);
+  --shadow-m:0 6px 18px rgba(34,39,46,.08);
+  --sp-1:6px; --sp-2:12px; --sp-3:18px; --sp-4:26px; --sp-5:38px; --sp-6:56px;
+  --f-sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Source Han Sans SC",system-ui,sans-serif;
+  --f-serif:"Songti SC","Source Han Serif SC",Georgia,serif;
+  --ann-h:40px;
+  --head-h:64px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--f-sans);
+  font-size:16px;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:var(--brand);text-decoration:none}
+a:hover{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+h1,h2,h3,h4{line-height:1.35;margin:0;font-weight:700}
+h2{font-size:24px;letter-spacing:.01em}
+h3{font-size:18px}
+p{margin:0 0 var(--sp-2)}
+section{scroll-margin-top:calc(var(--ann-h) + var(--head-h) + 12px)}
+[id]{scroll-margin-top:calc(var(--ann-h) + var(--head-h) + 12px)}
+
+/* ============ 吸顶公告条 ============ */
+.announce{
+  position:sticky;top:0;z-index:60;
+  background:linear-gradient(90deg,#2b3a4a,#3c4f63);
+  color:#f4ede1;
+  font-size:13.5px;
+  min-height:var(--ann-h);
+  display:flex;align-items:center;
+}
+.announce .wrap{
+  display:flex;gap:14px;align-items:center;
+  flex-wrap:wrap;
+  padding:6px 20px;
+}
+.announce strong{color:#f0c58a;font-weight:600}
+.announce .dot{width:6px;height:6px;border-radius:50%;background:#f0c58a;flex:0 0 auto}
+.announce a{color:#f4ede1;text-decoration:underline;text-underline-offset:3px}
+.announce a:hover{color:#f0c58a}
+
+/* ============ 吸顶页头 ============ */
+header.site{
+  position:sticky;top:var(--ann-h);z-index:55;
+  background:rgba(250,247,242,.94);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.headwrap{
+  max-width:1180px;margin:0 auto;padding:0 20px;
+  min-height:var(--head-h);
+  display:flex;align-items:center;gap:18px;
+}
+.brand{display:flex;align-items:center;gap:10px;flex:0 0 auto}
+.brand .mark{width:36px;height:36px;flex:0 0 auto}
+.brand .txt{font-weight:700;font-size:17px;letter-spacing:.02em;color:var(--brand);white-space:nowrap}
+nav.main{flex:1 1 auto;min-width:0}
+nav.main ul{list-style:none;margin:0;padding:0;display:flex;gap:4px;flex-wrap:wrap}
+nav.main a{
+  display:inline-block;padding:6px 10px;font-size:14.5px;color:var(--ink-2);
+  border-radius:var(--radius-s);white-space:nowrap;
+}
+nav.main a:hover{background:var(--brand-soft);color:var(--brand)}
+nav.main a.active{background:var(--brand);color:#fff}
+.head-actions{display:flex;align-items:center;gap:10px;flex:0 0 auto}
+.search{position:relative;display:flex;align-items:center}
+.search input{
+  width:180px;padding:7px 10px 7px 30px;font-size:14px;
+  border:1px solid var(--line-2);border-radius:var(--radius-s);
+  background:#fff;color:var(--ink);font-family:inherit;
+}
+.search input::placeholder{color:var(--ink-3)}
+.search .mag{position:absolute;left:9px;top:50%;transform:translateY(-50%);width:14px;height:14px;stroke:var(--ink-3);fill:none;stroke-width:1.8}
+.search-result{
+  position:absolute;top:calc(100% + 6px);right:0;width:300px;max-height:320px;overflow:auto;
+  background:#fff;border:1px solid var(--line-2);border-radius:var(--radius-m);
+  box-shadow:var(--shadow-m);padding:8px;font-size:14px;display:none;
+}
+.search-result.show{display:block}
+.search-result ul{list-style:none;margin:0;padding:0}
+.search-result li{padding:6px 8px;border-radius:var(--radius-s);color:var(--ink-2);line-height:1.5}
+.search-result li:hover{background:var(--brand-soft)}
+.search-result .empty{padding:10px 8px;color:var(--ink-3);line-height:1.6}
+.btn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:7px 14px;border-radius:var(--radius-s);
+  border:1px solid var(--brand);background:var(--brand);color:#fff;
+  font-size:14px;font-family:inherit;cursor:pointer;transition:transform .15s ease,background .15s ease;
+}
+.btn:hover{background:#1f2b38;color:#fff;transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--brand);border-color:var(--line-2)}
+.btn.ghost:hover{background:var(--brand-soft);color:var(--brand)}
+.menu-btn{display:none;background:transparent;border:1px solid var(--line-2);border-radius:var(--radius-s);width:38px;height:36px;cursor:pointer;color:var(--brand);align-items:center;justify-content:center}
+
+/* ============ 布局 ============ */
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.layout{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 300px;
+  gap:var(--sp-5);
+  padding-top:var(--sp-5);padding-bottom:var(--sp-6);
+  align-items:start;
+}
+.main-col{min-width:0}
+.side-col{min-width:0;display:flex;flex-direction:column;gap:var(--sp-4)}
+
+/* ============ 首屏 ============ */
+.hero{
+  border-bottom:1px solid var(--line);
+  background:
+    radial-gradient(900px 340px at 88% -10%,#f6e7d4 0%,transparent 62%),
+    radial-gradient(600px 260px at 6% 110%,#e7edf1 0%,transparent 60%),
+    var(--paper);
+}
+.hero-grid{
+  max-width:1180px;margin:0 auto;padding:var(--sp-5) 20px var(--sp-5);
+  display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+  gap:var(--sp-5);align-items:center;
+}
+.hero .kicker{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;color:var(--accent);letter-spacing:.08em;
+  border:1px solid #e7c9b4;background:#fff7f1;border-radius:999px;padding:3px 12px;margin-bottom:var(--sp-2);
+}
+.hero h1{
+  font-family:var(--f-serif);
+  font-size:40px;letter-spacing:.02em;color:var(--brand);
+  margin-bottom:var(--sp-2);
+}
+.hero .lede{font-size:16.5px;color:var(--ink-2);max-width:34em;margin-bottom:var(--sp-3)}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:var(--sp-4)}
+.hero-stats{display:flex;gap:26px;flex-wrap:wrap;border-top:1px dashed var(--line-2);padding-top:var(--sp-3)}
+.hero-stats div{min-width:96px}
+.hero-stats b{display:block;font-size:24px;font-family:var(--f-serif);color:var(--brand);line-height:1.2}
+.hero-stats span{font-size:13px;color:var(--ink-3)}
+.hero-art{
+  position:relative;aspect-ratio:4/3.4;
+  border-radius:var(--radius-l);
+  background:linear-gradient(160deg,#2b3a4a 0%,#3d5165 55%,#566b7e 100%);
+  box-shadow:var(--shadow-m);
+  overflow:hidden;
+}
+.hero-art svg{position:absolute;inset:0;width:100%;height:100%}
+.hero-art .cap{
+  position:absolute;left:16px;bottom:14px;
+  font-size:12.5px;color:#f0e3ce;letter-spacing:.04em;
+  background:rgba(20,26,32,.42);padding:4px 10px;border-radius:999px;
+}
+
+/* ============ 通用板块 ============ */
+.board{margin-bottom:var(--sp-6)}
+.board > h2{
+  display:flex;align-items:baseline;gap:10px;
+  padding-bottom:10px;border-bottom:2px solid var(--brand);
+  margin-bottom:var(--sp-3);
+}
+.board > h2 .en{font-size:12px;color:var(--ink-3);font-weight:500;letter-spacing:.12em;text-transform:uppercase}
+.board .sub{color:var(--ink-3);font-size:14px;margin:-6px 0 var(--sp-3)}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius-m);
+  box-shadow:var(--shadow-s);
+}
+
+/* 概览 */
+.overview{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp-2);
+}
+.ov-item{
+  padding:var(--sp-3);border-left:3px solid var(--gold);
+  background:linear-gradient(180deg,#fffdf9,#fff);
+  border-radius:0 var(--radius-m) var(--radius-m) 0;
+  border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.ov-item h3{font-size:15.5px;margin-bottom:6px;color:var(--brand)}
+.ov-item p{font-size:14px;color:var(--ink-2);margin:0}
+.ov-item .num{font-family:var(--f-serif);font-size:13px;color:var(--gold);letter-spacing:.06em}
+
+/* 精选卡片网格 */
+.grid-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp-3)}
+.p-card{
+  overflow:hidden;display:flex;flex-direction:column;
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius-m);
+  box-shadow:var(--shadow-s);transition:transform .16s ease,box-shadow .16s ease;
+}
+.p-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-m)}
+.p-card img{width:100%;height:150px;object-fit:cover;background:var(--brand-soft)}
+.p-card .body{padding:14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.p-card h3{font-size:15.5px;line-height:1.45}
+.p-card p{font-size:13.5px;color:var(--ink-2);margin:0}
+.p-card .meta{margin-top:auto;display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink-3);border-top:1px dashed var(--line);padding-top:8px}
+.tagline{display:inline-block;font-size:12px;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:1px 9px;margin-bottom:2px}
+
+/* 最新更新紧凑列表 */
+.updates ul{list-style:none;margin:0;padding:0}
+.updates li{
+  display:grid;grid-template-columns:78px minmax(0,1fr) auto;
+  gap:12px;align-items:baseline;
+  padding:11px 4px;border-bottom:1px dashed var(--line);
+  font-size:14.5px;
+}
+.updates li:last-child{border-bottom:none}
+.updates .date{font-family:var(--f-serif);color:var(--gold);font-size:13.5px;letter-spacing:.03em}
+.updates .what b{color:var(--brand);font-weight:600}
+.updates .what span{color:var(--ink-2)}
+.updates .from{font-size:12.5px;color:var(--ink-3);white-space:nowrap}
+
+/* 分类入口标签索引 */
+.cat-index{display:flex;flex-wrap:wrap;gap:10px}
+.cat-index a{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid var(--line-2);background:#fff;border-radius:999px;
+  padding:7px 15px;font-size:14.5px;color:var(--ink-2);
+  transition:transform .15s ease,border-color .15s ease,color .15s ease;
+}
+.cat-index a:hover{transform:translateY(-2px);border-color:var(--brand);color:var(--brand)}
+.cat-index a i{font-style:normal;font-size:12px;color:var(--ink-3)}
+
+/* 深度解析 */
+.deep{
+  background:#fffdf9;border:1px solid var(--line);
+  border-top:4px solid var(--brand);
+  border-radius:var(--radius-m);
+  padding:var(--sp-4);
+}
+.deep h2{margin-bottom:var(--sp-2)}
+.deep h3{
+  font-size:17px;margin:var(--sp-4) 0 var(--sp-2);
+  padding-left:11px;border-left:4px solid var(--accent);
+}
+.deep h3:first-of-type{margin-top:var(--sp-2)}
+.deep p{color:var(--ink-2);font-size:15px}
+.deep .claim{
+  background:var(--brand-soft);border-left:4px solid var(--brand);
+  padding:12px 16px;border-radius:0 var(--radius-s) var(--radius-s) 0;
+  font-size:15px;color:var(--ink);margin:var(--sp-2) 0;
+}
+.deep .claim strong{color:var(--brand)}
+.checklist{
+  list-style:none;margin:var(--sp-2) 0;padding:0;
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;
+}
+.checklist li{
+  font-size:14px;color:var(--ink-2);
+  padding:8px 10px 8px 30px;position:relative;
+  border:1px solid var(--line);border-radius:var(--radius-s);background:#fff;
+}
+.checklist li::before{
+  content:"✓";position:absolute;left:10px;top:8px;color:var(--ok);font-weight:700;
+}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:var(--sp-2) 0}
+.compare div{border:1px solid var(--line);border-radius:var(--radius-s);padding:12px;background:#fff;font-size:14px}
+.compare h4{font-size:14px;margin:0 0 6px;color:var(--brand)}
+.compare .a{border-top:3px solid var(--brand)}
+.compare .b{border-top:3px solid var(--gold)}
+.compare p{margin:0;color:var(--ink-2);font-size:13.5px}
+
+/* 体验指南：编号步骤 */
+.steps{list-style:none;counter-reset:st;margin:0;padding:0;display:grid;gap:var(--sp-2)}
+.steps li{
+  counter-increment:st;position:relative;padding:14px 16px 14px 58px;
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius-m);
+  font-size:14.5px;color:var(--ink-2);
+}
+.steps li::before{
+  content:counter(st,decimal-leading-zero);
+  position:absolute;left:16px;top:12px;
+  font-family:var(--f-serif);font-size:20px;color:var(--accent);font-weight:700;
+}
+.steps li b{display:block;color:var(--brand);font-size:15px;margin-bottom:2px}
+
+/* FAQ */
+.faq details{
+  border:1px solid var(--line);border-radius:var(--radius-m);
+  background:#fff;margin-bottom:10px;overflow:hidden;
+}
+.faq summary{
+  cursor:pointer;padding:13px 42px 13px 16px;font-size:15px;font-weight:600;color:var(--brand);
+  position:relative;list-style:none;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"+";position:absolute;right:14px;top:50%;transform:translateY(-50%);
+  font-size:20px;color:var(--accent);font-weight:400;line-height:1;
+}
+.faq details[open] summary::after{content:"−"}
+.faq details p{padding:0 16px 14px;margin:0;font-size:14.5px;color:var(--ink-2)}
+
+/* 评论 */
+.comments{display:grid;gap:var(--sp-2)}
+.cmt{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius-m);padding:14px 16px;
+}
+.cmt .who{display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--ink-3);margin-bottom:6px}
+.cmt .avatar{
+  width:28px;height:28px;border-radius:50%;display:grid;place-items:center;
+  background:var(--brand-soft);color:var(--brand);font-weight:700;font-size:13px;flex:0 0 auto;
+}
+.cmt .who b{color:var(--ink);font-weight:600;font-size:14px}
+.cmt .who em{font-style:normal;color:var(--gold);font-size:12.5px;margin-left:auto}
+.cmt p{font-size:14.5px;color:var(--ink-2);margin:0}
+.cmt .ref{color:var(--accent);font-size:13px}
+
+/* 资讯列表 */
+.news ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.news li{background:#fff;border:1px solid var(--line);border-radius:var(--radius-m);padding:13px 16px}
+.news .head{font-size:15px;font-weight:600;color:var(--brand);margin-bottom:3px}
+.news .head time{font-family:var(--f-serif);font-size:12.5px;color:var(--gold);font-weight:400;margin-left:8px}
+.news p{font-size:14px;color:var(--ink-2);margin:0}
+
+/* 推荐标签 */
+.reco{display:flex;flex-wrap:wrap;gap:9px}
+.reco a{
+  font-size:14px;color:var(--brand);border:1px dashed var(--line-2);
+  border-radius:var(--radius-s);padding:6px 12px;background:#fff;
+}
+.reco a:hover{border-style:solid;border-color:var(--accent);color:var(--accent)}
+
+/* 时间线 */
+.timeline{list-style:none;margin:0;padding:0 0 0 18px;border-left:2px solid var(--line-2)}
+.timeline li{position:relative;padding:0 0 var(--sp-3) 16px;font-size:14.5px;color:var(--ink-2)}
+.timeline li::before{
+  content:"";position:absolute;left:-25px;top:7px;width:10px;height:10px;border-radius:50%;
+  background:var(--paper);border:2px solid var(--accent);
+}
+.timeline b{color:var(--brand);font-family:var(--f-serif);letter-spacing:.02em;margin-right:8px}
+
+/* 引语卡 */
+.quote{
+  border-radius:var(--radius-m);padding:var(--sp-3) var(--sp-4);
+  background:linear-gradient(135deg,#2b3a4a,#41566b);color:#f3ebdd;
+  font-size:15px;line-height:1.85;
+}
+.quote p{margin:0 0 8px}
+.quote cite{font-style:normal;font-size:13px;color:#d8c8ad;display:block}
+
+/* 侧栏 */
+.side-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius-m);padding:var(--sp-3);box-shadow:var(--shadow-s)}
+.side-card h2{font-size:16px;margin-bottom:var(--sp-2);padding-bottom:8px;border-bottom:1px solid var(--line)}
+.side-nav{position:sticky;top:calc(var(--ann-h) + var(--head-h) + 14px)}
+.side-nav ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.side-nav a{
+  display:block;padding:6px 10px;font-size:14px;color:var(--ink-2);
+  border-left:3px solid transparent;border-radius:0 var(--radius-s) var(--radius-s) 0;
+}
+.side-nav a:hover{background:var(--brand-soft);color:var(--brand)}
+.side-nav a.on{border-left-color:var(--accent);background:var(--accent-soft);color:var(--brand);font-weight:600}
+.rank ol{margin:0;padding-left:20px;color:var(--ink-2);font-size:14px}
+.rank li{margin-bottom:8px;padding-left:2px}
+.rank li b{color:var(--brand);font-weight:600}
+.rank li span{display:block;font-size:12.5px;color:var(--ink-3)}
+.side-note{font-size:13px;color:var(--ink-3);line-height:1.7}
+
+/* 页尾 */
+footer.site{
+  border-top:1px solid var(--line);
+  background:#2b3a4a;color:#cfd6dd;
+  padding:var(--sp-5) 0 var(--sp-4);
+  font-size:14px;
+}
+.foot-grid{
+  max-width:1180px;margin:0 auto;padding:0 20px;
+  display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:var(--sp-4);
+}
+footer.site h3{font-size:14px;color:#f0e3ce;margin-bottom:10px;letter-spacing:.05em}
+footer.site a{color:#cfd6dd}
+footer.site a:hover{color:#f0c58a}
+.foot-brand{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.foot-brand .txt{font-weight:700;color:#fff;font-size:17px}
+.foot-brand .mark{width:32px;height:32px}
+.foot-list{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:13.5px}
+.foot-note{font-size:12.5px;color:#93a1ae;line-height:1.8;margin-top:var(--sp-4);border-top:1px solid #3d4d5c;padding-top:var(--sp-3)}
+.copy{max-width:1180px;margin:var(--sp-3) auto 0;padding:0 20px;font-size:12.5px;color:#93a1ae}
+
+/* 回到顶部 */
+#toTop{
+  position:fixed;right:18px;bottom:18px;z-index:70;
+  width:44px;height:44px;border-radius:50%;
+  background:var(--brand);color:#fff;border:none;cursor:pointer;
+  box-shadow:var(--shadow-m);display:none;place-items:center;
+  transition:transform .15s ease;
+}
+#toTop.show{display:grid}
+#toTop:hover{transform:translateY(-3px)}
+
+/* ============ 响应式 ============ */
+@media (max-width:1000px){
+  .layout{grid-template-columns:1fr}
+  .side-col{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3)}
+  .side-nav{position:static}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-art{max-width:520px}
+  .grid-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .overview{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  nav.main{
+    display:none;position:absolute;left:0;right:0;top:100%;
+    background:#fff;border-bottom:1px solid var(--line);
+    box-shadow:var(--shadow-m);padding:10px 16px 14px;
+  }
+  nav.main.open{display:block}
+  nav.main ul{flex-direction:column;gap:0}
+  nav.main a{display:block;padding:9px 8px;border-bottom:1px solid var(--line)}
+  header.site{position:sticky}
+  .headwrap{position:relative;flex-wrap:nowrap;gap:10px}
+  .menu-btn{display:inline-flex}
+  .head-actions .btn{display:none}
+  .search input{width:130px}
+  .search-result{width:min(88vw,300px);right:-40px}
+  .hero h1{font-size:30px}
+  .grid-cards{grid-template-columns:1fr}
+  .overview{grid-template-columns:1fr}
+  .checklist{grid-template-columns:1fr}
+  .compare{grid-template-columns:1fr}
+  .side-col{grid-template-columns:1fr}
+  .updates li{grid-template-columns:68px minmax(0,1fr);gap:8px}
+  .updates .from{display:none}
+  .deep{padding:var(--sp-3)}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:var(--sp-3)}
+}
+@media (max-width:400px){
+  .brand .txt{font-size:15px}
+  .search input{width:104px}
+  .hero h1{font-size:26px}
+  .foot-grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+  .p-card:hover,.btn:hover,#toTop:hover,.cat-index a:hover{transform:none}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="announce" id="announce">
+  <div class="wrap">
+    <span class="dot" aria-hidden="true"></span>
+    <span><strong>图集索引更新</strong>｜11 月 6 日补入“秋日胶片·林栖”第 03 组 42 张，并核对 10 月旧档的水印版本</span>
+    <a href="/#latest">查看更新明细</a>
+  </div>
+</div>
+
+<header class="site">
+  <div class="headwrap">
+    <a class="brand" href="/#top" aria-label="尤果网美图录 首页">
+      <svg class="mark" viewBox="0 0 64 64" role="img" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#2b3a4a"/>
+        <circle cx="24" cy="25" r="9" fill="#e8b06a"/>
+        <path d="M13 51l15-17 10 13 6-7 8 11z" fill="#f3e6d2"/>
+        <path d="M43 17v12M37 23h12" stroke="#f3e6d2" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span class="txt">尤果网美图录</span>
+    </a>
+    <nav class="main" id="mainNav" aria-label="主题导航">
+      <ul>
+        <li><a href="/#overview">图录概览</a></li>
+        <li><a href="/#picked">精选图集</a></li>
+        <li><a href="/#latest">最新更新</a></li>
+        <li><a href="/#cats">分类与模特</a></li>
+        <li><a href="/#deep">深度解析</a></li>
+        <li><a href="/#guide">浏览指南</a></li>
+        <li><a href="/#faq">常见问题</a></li>
+        <li><a href="/#rank">口碑榜</a></li>
+      </ul>
+    </nav>
+    <div class="head-actions">
+      <div class="search" role="search">
+        <svg class="mag" viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5L18 18" stroke-linecap="round"/></svg>
+        <label for="q" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">搜索图集标题、模特名或主题</label>
+        <input id="q" type="search" placeholder="搜图集 / 模特 / 主题" autocomplete="off" aria-describedby="searchHint">
+        <div class="search-result" id="searchResult" aria-live="polite"></div>
+      </div>
+      <button class="btn" type="button" id="randomBtn">随机翻一组</button>
+      <button class="menu-btn" type="button" id="menuBtn" aria-expanded="false" aria-controls="mainNav" aria-label="展开主题导航">
+        <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 9h14M2 13h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <div class="hero-grid">
+    <div>
+      <span class="kicker">写真图集索引 · 2026 年 11 月版</span>
+      <h1>尤果网美图录</h1>
+      <p class="lede">把散落在不同档期的写真图集按主题、模特与拍摄时间重新编号：哪一组是首发版本、哪一版补了 EXIF 信息、哪套图在二次压缩后发灰，都能在下单前查清。当前收录 1 286 组，其中 734 组标注了分辨率和张数。</p>
+      <div class="cta">
+        <a class="btn" href="/#picked">看本周精选</a>
+        <a class="btn ghost" href="/#guide">先读浏览指南</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>1 286</b><span>在档图集组数</span></div>
+        <div><b>46</b><span>收录模特名</span></div>
+        <div><b>11 月 6 日</b><span>最近一次校对</span></div>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 400 340" role="img" aria-label="图集索引示意：叠放的相框与编号标签">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f3e6d2"/><stop offset="1" stop-color="#dcc6a6"/>
+          </linearGradient>
+          <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#e8b06a"/><stop offset="1" stop-color="#c2632f"/>
+          </linearGradient>
+        </defs>
+        <rect x="52" y="66" width="196" height="150" rx="8" fill="#1f2b38" opacity=".5" transform="rotate(-7 150 141)"/>
+        <rect x="60" y="58" width="196" height="150" rx="8" fill="url(#g1)" transform="rotate(-7 158 133)"/>
+        <circle cx="128" cy="116" r="26" fill="#c2632f" opacity=".55"/>
+        <path d="M74 186l54-56 40 42 26-24 46 52z" fill="#2b3a4a" opacity=".55" transform="rotate(-7 158 133)"/>
+        <rect x="150" y="120" width="196" height="150" rx="8" fill="#0f171f" opacity=".45" transform="rotate(6 248 195)"/>
+        <rect x="142" y="112" width="196" height="150" rx="8" fill="#fbf6ec" transform="rotate(6 240 187)"/>
+        <circle cx="208" cy="172" r="28" fill="url(#g2)"/>
+        <path d="M156 240l54-58 42 46 28-26 44 46z" fill="#8fa3b6" transform="rotate(6 240 187)"/>
+        <g font-family="Georgia,serif" font-size="13" fill="#f0e3ce">
+          <rect x="44" y="266" width="84" height="26" rx="13" fill="#c2632f"/>
+          <text x="62" y="284">No.0341</text>
+          <rect x="140" y="282" width="88" height="26" rx="13" fill="#3d5165"/>
+          <text x="156" y="300">42 张</text>
+          <rect x="248" y="250" width="106" height="26" rx="13" fill="#b98a3e"/>
+          <text x="262" y="268">3000px 长边</text>
+        </g>
+        <g stroke="#f0e3ce" stroke-width="1.4" opacity=".55">
+          <path d="M340 46l0 26M327 59l26 0"/>
+          <path d="M30 130l0 18M21 139l18 0"/>
+        </g>
+      </svg>
+      <span class="cap">索引结构示意：组号 · 张数 · 长边像素</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="layout">
+    <main class="main-col">
+
+      <!-- 概览 -->
+      <section class="board" id="overview">
+        <h2>图录概览 <span class="en">Overview</span></h2>
+        <p class="sub">先弄清三件事：这套图是什么类型、原始尺寸多大、由谁在什么时间上传。三栏回答的是不同问题，不互相替代。</p>
+        <div class="overview">
+          <div class="ov-item">
+            <span class="num">01 / 类型</span>
+            <h3>棚拍套图与旅拍外景</h3>
+            <p>棚拍多为纯色背景、固定布光，单组 30—60 张；外景常在酒店、海边、老街取景，张数浮动大，120 张以上的组通常分 A/B 两段发布。</p>
+          </div>
+          <div class="ov-item">
+            <span class="num">02 / 规格</span>
+            <h3>长边 2000px 与 3000px 两档</h3>
+            <p>2026 年 9 月起新发组默认提供 3000px 版，早期存档多为 2000px。同一组两档并存时，画质差别主要体现在暗部噪点与裁切余量。</p>
+          </div>
+          <div class="ov-item">
+            <span class="num">03 / 出处</span>
+            <h3>首发、转载、重制三种来源</h3>
+            <p>首发组带原始拍摄日期与摄影师署名；转载组常见于汇总站，多数丢掉了 EXIF；重制组是二次调色版，编号后通常加“R”后缀。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 精选 -->
+      <section class="board" id="picked">
+        <h2>本周精选图集 <span class="en">Picked</span></h2>
+        <p class="sub">挑图的标准只有两条：拍摄日期能对上，分辨率与张数标注完整。以下六组在 11 月第一周完成校对。</p>
+        <div class="grid-cards">
+          <article class="p-card">
+            <img src="https://picsum.photos/seed/youguo-autumnfilm/480/300" width="480" height="300" loading="lazy" alt="秋日胶片主题外景，模特在梧桐道旁回身，暖色调">
+            <div class="body">
+              <span class="tagline">外景胶片</span>
+              <h3>秋日胶片·林栖 03 组</h3>
+              <p>10 月 28 日拍摄于老城梧桐道，42 张，3000px 长边。胶片扫描保留颗粒，未做磨皮。</p>
+              <div class="meta"><span>编号 0341</span><span>42 张</span></div>
+            </div>
+          </article>
+          <article class="p-card">
+            <img src="https://picsum.photos/seed/youguo-hotel-room/480/300" width="480" height="300" loading="lazy" alt="酒店客房窗边自然光人像，白纱帘与浅色床品">
+            <div class="body">
+              <span class="tagline">室内自然光</span>
+              <h3>窗边白纱·沈亦 全套</h3>
+              <p>10 月 21 日棚拍改客房实景，56 张。窗光为主光源，后期只压了高光，肤色偏冷。</p>
+              <div class="meta"><span>编号 0338</span><span>56 张</span></div>
+            </div>
+          </article>
+          <article class="p-card">
+            <img src="https://picsum.photos/seed/youguo-seaside-cliff/480/300" width="480" height="300" loading="lazy" alt="海边礁石外景，模特穿深色长裙站在浅水处">
+            <div class="body">
+              <span class="tagline">旅拍外景</span>
+              <h3>礁石与浅滩·A 段</h3>
+              <p>10 月 17 日东岸取景，A 段 68 张，B 段另发。日落前半小时完成主要机位，色温偏金。</p>
+              <div class="meta"><span>编号 0335</span><span>68 张</span></div>
+            </div>
+          </article>
+          <article class="p-card">
+            <img src="https://picsum.photos/seed/youguo-studio-grey/480/300" width="480" height="300" loading="lazy" alt="灰色无缝背景棚拍，模特白色背心正面站姿">
+            <div class="body">
+              <span class="tagline">棚拍基础</span>
+              <h3>灰底基础款·苏漫 12 套</h3>
+              <p>10 月 12 日同机位连拍，12 组服装变化，每组 18 张。适合对照构图与姿势差异。</p>
+              <div class="meta"><span>编号 0330</span><span>216 张</span></div>
+            </div>
+          </article>
+          <article class="p-card">
+            <img src="https://picsum.photos/seed/youguo-vintage-street/480/300" width="480" height="300" loading="lazy" alt="老街骑楼下逆光人像，黄昏色与斑驳墙面">
+            <div class="body">
+              <span class="tagline">城市街拍</span>
+              <h3>骑楼黄昏·周乔 街拍集</h3>
+              <p>10 月 9 日拍摄，74 张。逆光占比约三分之一，暗部细节依赖 3000px 版本才看得全。</p>
+              <div class="meta"><span>编号 0327</span><span>74 张</span></div>
+            </div>
+          </article>
+          <article class="p-card">
+            <img src="https://picsum.photos/seed/youguo-mirror-room/480/300" width="480" height="300" loading="lazy" alt="镜面房间内的侧身影像，反射形成双重构图">
+            <div class="body">
+              <span class="tagline">概念棚拍</span>
+              <h3>镜面房间·顾青 R 版</h3>
+              <p>重制版，比 8 月首版多 9 张补拍，调色由暖调改为中性。编号带 R，别和原版混购。</p>
+              <div class="meta"><span>编号 0319R</span><span>51 张</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 最新更新 -->
+      <section class="board updates" id="latest">
+        <h2>最新更新明细 <span class="en">Updates</span></h2>
+        <p class="sub">只列可核对的变动：新增组、补档、编号勘误与下架。时间以最后一次校对为准。</p>
+        <div class="card" style="padding:4px 16px">
+          <ul>
+            <li>
+              <span class="date">11 月 6 日</span>
+              <span class="what"><b>0341 秋日胶片·林栖</b> <span>补入 03 组剩余 12 张，总数由 30 改为 42</span></span>
+              <span class="from">来源：原始拍摄档</span>
+            </li>
+            <li>
+              <span class="date">11 月 4 日</span>
+              <span class="what"><b>0319R 镜面房间</b> <span>标注重制版与原版的 9 张差异，避免重复收录</span></span>
+              <span class="from">来源：编号勘误</span>
+            </li>
+            <li>
+              <span class="date">11 月 2 日</span>
+              <span class="what"><b>0308 旧档水印版</b> <span>确认该组转载版右下角有水印，原版无；两版并存已分列</span></span>
+              <span class="from">来源：读者反馈核对</span>
+            </li>
+            <li>
+              <span class="date">10 月 30 日</span>
+              <span class="what"><b>0335 礁石与浅滩</b> <span>B 段 61 张上线，与 A 段共用同一组号</span></span>
+              <span class="from">来源：拍摄方发布</span>
+            </li>
+            <li>
+              <span class="date">10 月 27 日</span>
+              <span class="what"><b>0322 海边清晨</b> <span>因原片损坏下架，目录保留编号，标注“不可获取”</span></span>
+              <span class="from">来源：社群通告</span>
+            </li>
+            <li>
+              <span class="date">10 月 24 日</span>
+              <span class="what"><b>0315 白墙与藤椅</b> <span>新增 2000px 轻量版，方便手机端逐张翻阅</span></span>
+              <span class="from">来源：规格补档</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 分类入口 -->
+      <section class="board" id="cats">
+        <h2>分类与模特索引 <span class="en">Index</span></h2>
+        <p class="sub">按取景方式、色调与常见搜索词分三层。数字是在档组数，不是张数。</p>
+        <div class="cat-index">
+          <a href="/#picked">棚拍纯色背景 <i>214</i></a>
+          <a href="/#picked">酒店客房自然光 <i>96</i></a>
+          <a href="/#picked">海边礁石外景 <i>88</i></a>
+          <a href="/#picked">秋日胶片颗粒 <i>63</i></a>
+          <a href="/#picked">骑楼老街街拍 <i>57</i></a>
+          <a href="/#picked">镜面反射概念 <i>41</i></a>
+          <a href="/#picked">白纱窗帘室内 <i>39</i></a>
+          <a href="/#picked">逆光黄昏人像 <i>35</i></a>
+          <a href="/#picked">林栖 <i>18</i></a>
+          <a href="/#picked">沈亦 <i>14</i></a>
+          <a href="/#picked">苏漫 <i>12</i></a>
+          <a href="/#picked">周乔 <i>11</i></a>
+        </div>
+      </section>
+
+      <!-- 深度解析 -->
+      <section class="board deep" id="deep">
+        <h2>深度解析：同一组图为什么会有三个版本</h2>
+        <p>编号相同、封面相同，下载下来却是三种画质。这是整理图录时最常被问的问题，也是判断一套图值不值得收的关键。以下判断都可以拿具体组去核。</p>
+
+        <div class="claim">
+          <strong>判断一：</strong>同一组图的“首发版”与“转载版”，在 2000px 档上的差别通常小于 8% 的像素信息量，肉眼不容易分；真正的分水岭在 3000px 档，转载版几乎都没有这一档。
+        </div>
+
+        <h3>版本差异从哪来：以 0308 为例</h3>
+        <p>0308 组在 9 月 18 日首发，原始文件 58 张，长边 3000px，EXIF 保留相机型号与拍摄时间。10 月 6 日某汇总站转载，压缩到 2000px 长边，张数变成 56 张——少的 2 张是逆光高噪点片，被转载方主动剔除。11 月 2 日核对时还发现，转载版右下角压了半透明水印，原版没有。</p>
+        <p>时间线可以这样记：<b>9 月 18 日</b>原版发布、<b>10 月 6 日</b>转载版出现、<b>11 月 2 日</b>两版在目录中分列。把这三条对上，再决定要不要为 2 张高噪点片和去水印多花一次查找成本。</p>
+
+        <h3>分辨率与张数：两个维度不能混着看</h3>
+        <div class="compare">
+          <div class="a">
+            <h4>2000px 长边</h4>
+            <p>手机全屏翻阅够用，单张约 1.2—1.8MB。适合先看构图和姿势，再决定去不去找原版。旧档多数只有这一档。</p>
+          </div>
+          <div class="b">
+            <h4>3000px 长边</h4>
+            <p>单张 3—5MB，暗部与布料纹理保留完整。2026 年 9 月起新发组默认提供，早期组需要看编号是否标注“高清补档”。</p>
+          </div>
+        </div>
+        <p>0341 组是个反例：张数从 30 补到 42，但新增的 12 张只有 2000px，因为补拍机位用了备用机。所以“张数最多”不等于“规格最全”，两个字段得分开核。</p>
+
+        <h3>可核对清单：拿到一组图先查这五项</h3>
+        <ul class="checklist">
+          <li>编号后缀是否带 R（重制版）</li>
+          <li>张数与目录标注是否一致</li>
+          <li>长边像素能否在文件信息里读到</li>
+          <li>右下角有无半透明水印</li>
+          <li>EXIF 的拍摄日期是否落在发布日前</li>
+        </ul>
+        <p>五项里有两项对不上，基本可以判定是转载或二次压缩。五项全对，再看拍摄日期是否与模特当时的档期吻合——这一条能排除拼接组。0335 的 A/B 两段就是靠拍摄日期同一天、机位连续来确认同源的。</p>
+
+        <h3>一个容易被反驳的说法</h3>
+        <p>“重制版一定比原版好”在 0319R 上就不成立。重制版把暖调改成中性，肤色更准，但补拍的 9 张用了不同镜头，边缘锐度略低。如果喜欢原来的暖调氛围，原版反而更合意。判断依据不是版本新旧，而是你更在意色调一致还是肤色准确。</p>
+
+        <div class="claim">
+          <strong>判断二：</strong>目录里标注“不可获取”的编号应当保留，不应删条目。0322 下架后，如果连编号一起删掉，读者会以为这套图不存在，转而去找来路不明的转载包，反而增加误购。
+        </div>
+      </section>
+
+      <!-- 体验指南 -->
+      <section class="board" id="guide">
+        <h2>图集浏览与检索指南 <span class="en">How to</span></h2>
+        <p class="sub">从进目录到确认一组图，按顺序走五步，多数坑能提前避开。</p>
+        <ol class="steps">
+          <li><b>先定主题词，再定模特名</b>主题词（如“秋日胶片”“礁石外景”）能一次带出十几组；模特名适合已经知道想看谁的情况。两者叠加搜索容易漏掉跨主题的组。</li>
+          <li><b>看编号后缀</b>纯数字是首发版，带 R 是重制版，带 B 是同一组的第二段。后缀决定你拿到的是原片、调色版还是续篇，别混。</li>
+          <li><b>核对张数与长边</b>目录卡片右下角的“42 张 / 3000px”就是这两个字段。缺一个就点进详情看备注，备注里通常写了补拍或压缩原因。</li>
+          <li><b>读评论里的具体指向</b>“0341 的 03 组逆光片发灰”比“这组好看”有用得多。评论提到的具体张数与机位，可以拿去和文件信息对照。</li>
+          <li><b>记下编号再离开</b>编号是唯一稳定的检索键。标题可能被转载方改写，编号不会。记下四位数字加后缀，下次直接搜。</li>
+        </ol>
+      </section>
+
+      <!-- FAQ -->
+      <section class="board faq" id="faq">
+        <h2>常见问题 <span class="en">FAQ</span></h2>
+        <details>
+          <summary>同一组图标注 30 张和 42 张，哪个才是完整版？</summary>
+          <p>先看拍摄日期。0341 组 30 张版是首发当天上传，42 张版是 11 月 6 日补入备份卡里的 12 张，拍摄日期相同，所以 42 张更完整。若两版拍摄日期相差数周，多出来的往往是补拍，风格可能有出入。</p>
+        </details>
+        <details>
+          <summary>带 R 后缀的重制版和原版可以同时收吗？</summary>
+          <p>看差异点。0319R 重制版调色从暖改中性，并补拍 9 张，和原版的构图重合度约七成。只想要氛围感，原版够了；需要肤色准确或补拍机位，才考虑重制版。两版同收的意义在于对照调色，不在张数叠加。</p>
+        </details>
+        <details>
+          <summary>2000px 版和 3000px 版在实际翻阅时差多少？</summary>
+          <p>手机全屏看，差距主要在暗部。0308 组的逆光片在 2000px 版上暗部糊成一片，3000px 版能看清布料褶皱。正常光线下两者差别不大，所以旧档只有 2000px 也不必刻意去找高清版。</p>
+        </details>
+        <details>
+          <summary>转载版右下角的水印能判断来源吗？</summary>
+          <p>能看出一部分。0308 组转载版的水印为某汇总站站名，位置固定在右下角。但水印样式会变，不能只凭水印断定是第几手转载。更稳的办法是看张数是否被删减、EXIF 是否被清空。</p>
+        </details>
+        <details>
+          <summary>下架组的编号为什么还留在目录里？</summary>
+          <p>0322 因原片损坏下架，编号保留并标注“不可获取”。保留编号是为了防止读者把转载包误当成新组，也方便日后原片修复后复原条目。找不到不等于没存在过。</p>
+        </details>
+      </section>
+
+      <!-- 评论 -->
+      <section class="board" id="comments">
+        <h2>读者评论与勘误 <span class="en">Comments</span></h2>
+        <p class="sub">评论按时间排列，包含勘误与不同意见。指向具体条目的评论优先展示。</p>
+        <div class="comments">
+          <div class="cmt">
+            <div class="who"><span class="avatar">柯</span><b>柯屿</b><em>11 月 6 日</em></div>
+            <p><span class="ref">0341</span> 的 03 组补入之后，逆光那几张确实清楚了。之前 30 张版里第 17 张整片发灰，现在能看见梧桐叶脉。</p>
+          </div>
+          <div class="cmt">
+            <div class="who"><span class="avatar">慕</span><b>慕青</b><em>11 月 5 日</em></div>
+            <p>想问 0338 的肤色是不是压过头了。窗光版第 22 张开始脸偏青，和 10 月 21 日拍摄当天的阴天光线对不上。</p>
+          </div>
+          <div class="cmt">
+            <div class="who"><span class="avatar">老</span><b>老周</b><em>11 月 4 日</em></div>
+            <p>0319R 那个重制版我不太买账。暖调是这组的魂，改成中性之后像另一套图。补的 9 张边缘也软。</p>
+          </div>
+          <div class="cmt">
+            <div class="who"><span class="avatar">阿</span><b>阿澈</b><em>11 月 3 日</em></div>
+            <p>编号勘误做得好。<span class="ref">0308</span> 之前我在别处下过带水印的，一直以为就是原版，现在知道少了 2 张高噪点片。</p>
+          </div>
+          <div class="cmt">
+            <div class="who"><span class="avatar">林</span><b>林间</b><em>11 月 1 日</em></div>
+            <p>0335 的 B 段 61 张和 A 段机位有重复，但傍晚那一组光比 A 段好。两段都看才完整，只收 A 段会缺收尾。</p>
+          </div>
+          <div class="cmt">
+            <div class="who"><span class="avatar">沉</span><b>沉舟</b><em>10 月 30 日</em></div>
+            <p>不太理解为什么 0322 要留着。既然原片坏了，标不可获取不如删掉，看着列表里挂着又打不开有点烦。</p>
+          </div>
+          <div class="cmt">
+            <div class="who"><span class="avatar">黎</span><b>黎岸</b><em>10 月 28 日</em></div>
+            <p><span class="ref">0330</span> 的灰底 12 套适合对着看姿势。苏漫第 7 套和第 8 套只差了抬手角度，连拍的痕迹很明显，能看出当天拍摄节奏。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 相关资讯 -->
+      <section class="board news" id="news">
+        <h2>相关资讯 <span class="en">News</span></h2>
+        <ul>
+          <li>
+            <div class="head">秋季档期结束，外景组占比升到 41%<time>11 月 2 日</time></div>
+            <p>9 月至 10 月收录的 87 组里，外景 36 组，比夏季档多 11 组。海边与老街两类合计过半，棚拍组则集中在灰色与白色背景。</p>
+          </li>
+          <li>
+            <div class="head">3000px 补档覆盖早期 63 组<time>10 月 29 日</time></div>
+            <p>编号 0100—0200 段中有 63 组完成高清补档，多为 2025 年存档。补档组在卡片上标“高清补档”，未标组仍为 2000px。</p>
+          </li>
+          <li>
+            <div class="head">编号 B 段拆分的做法开始统一<time>10 月 26 日</time></div>
+            <p>超过 100 张的组今后统一拆 A/B 两段，共用主编号。0335 是首批按此规则登记的外景组，B 段 61 张已上线。</p>
+          </li>
+          <li>
+            <div class="head">转载水印识别指南更新至第三版<time>10 月 23 日</time></div>
+            <p>新增 6 种常见水印位置说明，并附 0308 组转载版与原版的对照描述。识别要点集中在裁切边与张数差值。</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 榜单 -->
+      <section class="board rank" id="rank">
+        <h2>十月口碑榜与时间线 <span class="en">Rank &amp; Timeline</span></h2>
+        <p class="sub">榜单依据评论中被提到的次数与勘误修正量，不按浏览量排。</p>
+        <div class="grid-cards" style="grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)">
+          <div class="card" style="padding:var(--sp-3)">
+            <h3 style="font-size:16px;margin-bottom:10px">评论提及次数前四</h3>
+            <ol style="margin:0;padding-left:20px;font-size:14.5px;color:var(--ink-2);line-height:1.95">
+              <li><b style="color:var(--brand)">0341 秋日胶片·林栖</b> — 9 次提及，补档后被讨论最多</li>
+              <li><b style="color:var(--brand)">0319R 镜面房间</b> — 7 次，争议集中在调色方向</li>
+              <li><b style="color:var(--brand)">0308 旧档水印版</b> — 6 次，勘误带动讨论</li>
+              <li><b style="color:var(--brand)">0330 灰底基础款</b> — 4 次，对照姿势用途被提到</li>
+            </ol>
+          </div>
+          <div class="card" style="padding:var(--sp-3)">
+            <h3 style="font-size:16px;margin-bottom:10px">十月至今的目录变动</h3>
+            <ul class="timeline" style="margin-top:4px">
+              <li><b>10·17</b>0335 外景开拍，A 段次周上线</li>
+              <li><b>10·24</b>0315 增加 2000px 轻量版</li>
+              <li><b>10·27</b>0322 下架，编号保留</li>
+              <li><b>11·02</b>0308 两版分列</li>
+              <li><b>11·06</b>0341 补入 12 张</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 创作者证言 -->
+      <section class="board" id="voices">
+        <h2>拍摄侧的说法 <span class="en">Voices</span></h2>
+        <div class="quote">
+          <p>“同一天拍的，分两批传，不是拆开卖。第一次传的时候备份卡还没读，后来补上的 12 张才是当天最后半小时的光。” —— 0341 组拍摄者在小群里对补档的解释，11 月 6 日。</p>
+          <cite>转述内容：补档原因是设备读取顺序，非刻意拆分。此说法与拍摄日期一致，但张数差值的具体原因未提供文件记录。</cite>
+        </div>
+      </section>
+
+      <!-- 相关推荐 -->
+      <section class="board" id="reco">
+        <h2>相关推荐 <span class="en">Related</span></h2>
+        <p class="sub">按当前浏览的图集类型给邻近选项，每条都能在目录里用编号搜到。</p>
+        <div class="reco">
+          <a href="/#picked">秋日胶片颗粒图集</a>
+          <a href="/#picked">酒店客房自然光人像</a>
+          <a href="/#picked">海边礁石外景 A/B 分段</a>
+          <a href="/#picked">灰底棚拍姿势对照</a>
+          <a href="/#picked">骑楼老街黄昏街拍</a>
+          <a href="/#picked">镜面反射概念棚拍</a>
+          <a href="/#picked">逆光人像暗部保留</a>
+          <a href="/#picked">3000px 高清补档组</a>
+          <a href="/#cat">林栖 图集索引</a>
+          <a href="/#cat">沈亦 图集索引</a>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- 侧栏，DOM 顺序在主内容之后 -->
+    <aside class="side-col" aria-label="侧栏">
+      <div class="side-card side-nav">
+        <h2>目录导航</h2>
+        <ul id="sideList">
+          <li><a href="/#overview">图录概览</a></li>
+          <li><a href="/#picked">本周精选图集</a></li>
+          <li><a href="/#latest">最新更新明细</a></li>
+          <li><a href="/#cats">分类与模特索引</a></li>
+          <li><a href="/#deep">深度解析</a></li>
+          <li><a href="/#guide">浏览指南</a></li>
+          <li><a href="/#faq">常见问题</a></li>
+          <li><a href="/#comments">读者评论</a></li>
+          <li><a href="/#news">相关资讯</a></li>
+          <li><a href="/#rank">口碑榜</a></li>
+          <li><a href="/#reco">相关推荐</a></li>
+        </ul>
+      </div>
+      <div class="side-card">
+        <h2>近期核对提示</h2>
+        <p class="side-note">11 月 6 日补档的 0341 组，新增 12 张只有 2000px，和原 30 张的 3000px 混在一组里。翻阅时按文件名后缀区分，避免误判整组规格。</p>
+      </div>
+      <div class="side-card rank">
+        <h2>编号速查</h2>
+        <ol>
+          <li><b>0341</b><span>秋日胶片·林栖，42 张</span></li>
+          <li><b>0338</b><span>窗边白纱·沈亦，56 张</span></li>
+          <li><b>0335</b><span>礁石与浅滩，A 68 / B 61</span></li>
+          <li><b>0330</b><span>灰底基础款·苏漫，216 张</span></li>
+          <li><b>0319R</b><span>镜面房间重制版，51 张</span></li>
+        </ol>
+      </div>
+      <div class="side-card">
+        <h2>勘误入口</h2>
+        <p class="side-note">发现张数、长边或拍摄日期与目录不符，记录编号与截图时间后，在评论板块留言。核对后会更新到“最新更新明细”，并保留原条目。</p>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer class="site">
+  <div class="foot-grid">
+    <div>
+      <div class="foot-brand">
+        <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+          <rect width="64" height="64" rx="14" fill="#f3e6d2"/>
+          <circle cx="24" cy="25" r="9" fill="#c2632f"/>
+          <path d="M13 51l15-17 10 13 6-7 8 11z" fill="#2b3a4a"/>
+        </svg>
+        <span class="txt">尤果网美图录</span>
+      </div>
+      <p style="margin:0;font-size:13.5px;color:#b8c3cd">按编号、张数与长边像素整理写真图集，帮你在翻阅前确认版本与规格。</p>
+    </div>
+    <div>
+      <h3>图集频道</h3>
+      <ul class="foot-list">
+        <li><a href="/#picked">棚拍纯色背景</a></li>
+        <li><a href="/#picked">酒店客房自然光</a></li>
+        <li><a href="/#picked">海边礁石外景</a></li>
+        <li><a href="/#picked">秋日胶片颗粒</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>索引与解析</h3>
+      <ul class="foot-list">
+        <li><a href="/#cats">分类与模特索引</a></li>
+        <li><a href="/#deep">版本差异解析</a></li>
+        <li><a href="/#guide">浏览与检索指南</a></li>
+        <li><a href="/#faq">常见问题</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>更新与反馈</h3>
+      <ul class="foot-list">
+        <li><a href="/#latest">最新更新明细</a></li>
+        <li><a href="/#news">相关资讯</a></li>
+        <li><a href="/#comments">读者评论与勘误</a></li>
+        <li><a href="/#rank">十月口碑榜</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-note">
+    <p style="margin:0 0 6px">图集编号、张数、长边像素与评论均为示例数据，用于说明索引结构与核对方法；拍摄日期与档期按 2026 年 11 月 8 日前 30 天内的示例生成。页面更新记录对应正文“最新更新明细”中 11 月 6 日的 0341 组补档一项。</p>
+    <p style="margin:0">页面最后校对：2026 年 11 月 6 日</p>
+  </div>
+  <div class="copy">© 2026 尤果网美图录 · 图集索引示例站</div>
+</footer>
+
+<button id="toTop" type="button" aria-label="回到顶部">
+  <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M9 14V5M4 9l5-5 5 5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script>
+(function(){
+  "use strict";
+
+  /* 搜索数据：标题 + 关键词，链接指向页内栏目 */
+  var data = [
+    {t:"秋日胶片·林栖 03 组 42 张", k:"秋日胶片 外景 林栖 0341 3000px", href:"/#picked"},
+    {t:"窗边白纱·沈亦 全套 56 张", k:"酒店客房 自然光 沈亦 0338 白纱", href:"/#picked"},
+    {t:"礁石与浅滩 A 段 68 张", k:"海边 礁石 外景 旅拍 0335 A段", href:"/#picked"},
+    {t:"灰底基础款·苏漫 12 套", k:"棚拍 灰底 纯色背景 苏漫 0330", href:"/#picked"},
+    {t:"骑楼黄昏·周乔 街拍集 74 张", k:"骑楼 老街 街拍 逆光 0327 周乔", href:"/#picked"},
+    {t:"镜面房间·顾青 R 版 51 张", k:"镜面 反射 概念棚拍 重制版 0319R 顾青", href:"/#picked"},
+    {t:"版本差异：首发版与转载版怎么分", k:"版本 转载 水印 0308 深度解析", href:"/#deep"},
+    {t:"2000px 与 3000px 长边对照", k:"分辨率 长边像素 画质 补档", href:"/#deep"},
+    {t:"编号后缀 R 与 B 的含义", k:"编号 后缀 重制版 A段 B段", href:"/#guide"},
+    {t:"0322 下架为何保留编号", k:"下架 不可获取 0322 编号", href:"/#faq"},
+    {t:"十月口碑榜与目录变动时间线", k:"榜单 时间线 变动 十月", href:"/#rank"},
+    {t:"图集浏览五步指南", k:"指南 检索 步骤 编号", href:"/#guide"},
+    {t:"林栖 图集索引", k:"模特 林栖 索引", href:"/#cats"},
+    {t:"沈亦 图集索引", k:"模特 沈亦 索引", href:"/#cats"},
+    {t:"读者评论与勘误记录", k:"评论 勘误 反馈", href:"/#comments"}
+  ];
+
+  var q = document.getElementById("q");
+  var box = document.getElementById("searchResult");
+
+  function escapeHTML(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"})[c];
+    });
+  }
+
+  function render(){
+    var term = q.value.trim().toLowerCase();
+    if(!term){ box.classList.remove("show"); box.innerHTML=""; return; }
+    var hits = data.filter(function(d){
+      return (d.t + " " + d.k).toLowerCase().indexOf(term) > -1;
+    }).slice(0, 8);
+    if(!hits.length){
+      box.innerHTML = '<div class="empty">没有匹配的图集或编号。换成四位编号（如 0341）或模特名再试一次。</div>';
+    } else {
+      box.innerHTML = "<ul>" + hits.map(function(d){
+        return '<li><a href="' + d.href + '">' + escapeHTML(d.t) + "</a></li>";
+      }).join("") + "</ul>";
+    }
+    box.classList.add("show");
+  }
+
+  q.addEventListener("input", render);
+  q.addEventListener("focus", function(){ if(q.value.trim()) render(); });
+  q.addEventListener("keydown", function(e){
+    if(e.key === "Escape"){ box.classList.remove("show"); q.blur(); }
+  });
+  document.addEventListener("click", function(e){
+    if(!e.target.closest(".search")) box.classList.remove("show");
+  });
+
+  /* 移动端菜单 */
+  var menuBtn = document.getElementById("menuBtn");
+  var mainNav = document.getElementById("mainNav");
+  menuBtn.addEventListener("click", function(){
+    var open = mainNav.classList.toggle("open");
+    menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    menuBtn.setAttribute("aria-label", open ? "收起主题导航" : "展开主题导航");
+  });
+  mainNav.addEventListener("click", function(e){
+    if(e.target.tagName === "A" && window.matchMedia("(max-width:760px)").matches){
+      mainNav.classList.remove("open");
+      menuBtn.setAttribute("aria-expanded","false");
+      menuBtn.setAttribute("aria-label","展开主题导航");
+    }
+  });
+
+  /* 回到顶部 */
+  var toTop = document.getElementById("toTop");
+  var ticking = false;
+  window.addEventListener("scroll", function(){
+    if(ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(function(){
+      toTop.classList.toggle("show", window.scrollY > 600);
+      ticking = false;
+    });
+  }, {passive:true});
+  toTop.addEventListener("click", function(){
+    window.scrollTo({top:0, behavior:"smooth"});
+  });
+
+  /* 侧栏滚动高亮 */
+  var links = Array.prototype.slice.call(document.querySelectorAll("#sideList a"));
+  var sections = links.map(function(a){
+    return document.querySelector(a.getAttribute("href").replace("/#","#"));
+  }).filter(Boolean);
+
+  function highlight(){
+    var y = window.scrollY + 160;
+    var current = null;
+    sections.forEach(function(sec){
+      if(sec.offsetTop <= y) current = sec.id;
+    });
+    links.forEach(function(a){
+      a.classList.toggle("on", a.getAttribute("href") === "/#" + current);
+    });
+  }
+  window.addEventListener("scroll", highlight, {passive:true});
+  highlight();
+
+  /* 随机翻一组 */
+  document.getElementById("randomBtn").addEventListener("click", function(){
+    var pool = ["/#picked","/#latest","/#cats","/#deep","/#rank"];
+    var pick = pool[Math.floor(Math.random()*pool.length)];
+    window.location.hash = pick.replace("/","");
+  });
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "尤果网美图录",
+  "alternateName": "美图录图集索引",
+  "inLanguage": "zh-CN",
+  "description": "按编号、张数与长边像素整理写真图集的索引站，提供版本差异说明与检索指南。"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "同一组图标注 30 张和 42 张，哪个才是完整版？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "先看拍摄日期。0341 组 30 张版是首发当天上传，42 张版是 11 月 6 日补入备份卡里的 12 张，拍摄日期相同，所以 42 张更完整。若两版拍摄日期相差数周，多出来的往往是补拍，风格可能有出入。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "带 R 后缀的重制版和原版可以同时收吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "看差异点。0319R 重制版调色从暖改中性，并补拍 9 张，和原版的构图重合度约七成。只想要氛围感，原版够了；需要肤色准确或补拍机位，才考虑重制版。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "2000px 版和 3000px 版在实际翻阅时差多少？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "手机全屏看，差距主要在暗部。0308 组的逆光片在 2000px 版上暗部糊成一片，3000px 版能看清布料褶皱。正常光线下两者差别不大，旧档只有 2000px 也不必刻意去找高清版。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "转载版右下角的水印能判断来源吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "能看出一部分。0308 组转载版的水印为某汇总站站名，位置固定在右下角。但水印样式会变，不能只凭水印断定是第几手转载。更稳的办法是看张数是否被删减、EXIF 是否被清空。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "下架组的编号为什么还留在目录里？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "0322 因原片损坏下架，编号保留并标注不可获取。保留编号是为了防止读者把转载包误当成新组，也方便日后原片修复后复原条目。"
+      }
+    }
+  ]
+}
+</script>
+</body>
+                                                     </html>
